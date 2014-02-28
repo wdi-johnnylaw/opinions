@@ -4,7 +4,9 @@
   <%= image_tag @thing.image_url %>
 </section>
 
-<div style="clear: both"></div>
+<div style="clear: both">
+  <strong>Rating: <%= @thing.average_rating || 'Not yet rated' %></strong>
+</div>
 <ul class="opinions-list">
   <%= render @thing.opinions %>
 </ul>
