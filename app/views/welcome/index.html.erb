@@ -3,3 +3,11 @@
 <ul>
   <%= render @things %>
 </ul>
+
+<ul>
+  <%= form_for current_user do |f| %>
+    <%= f.fields_for :opinions do |rating_form| %>
+      <%= rating_form.radio_button :rating, 1 %>
+    <% end %>
+  <% end %>
+</ul>

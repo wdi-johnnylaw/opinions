@@ -11,16 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227200614) do
+ActiveRecord::Schema.define(version: 20140228074734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "things", force: true do |t|
-    t.string   "name"
+  create_table "opinions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "thing_id"
+    t.integer  "rating"
+    t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "opinions", ["thing_id"], name: "index_opinions_on_thing_id", using: :btree
+  add_index "opinions", ["user_id"], name: "index_opinions_on_user_id", using: :btree
+
+  create_table "things", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "things_users", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "thing_id"
+  end
+
+  add_index "things_users", ["thing_id"], name: "index_things_users_on_thing_id", using: :btree
+  add_index "things_users", ["user_id", "thing_id"], name: "index_things_users_on_user_id_and_thing_id", using: :btree
+  add_index "things_users", ["user_id"], name: "index_things_users_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
