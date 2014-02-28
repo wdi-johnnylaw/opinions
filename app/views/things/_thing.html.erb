@@ -1,0 +1,17 @@
+<li>
+  <span class="thumb up">
+    <%= form_for Opinion.new, remote: true do |f| %>
+      <%= f.hidden_field :thumb_direction, value: true %>
+      <%= f.hidden_field :thing_id, value: thing.id %>
+      <%= f.submit '^' %>
+    <% end %>
+  </span>
+  <span class="thumb down">
+    <%= form_for Opinion.new, remote: true do |f| %>
+      <%= f.hidden_field :thumb_direction, value: false %>
+      <%= f.hidden_field :thing_id, value: thing.id %>
+      <%= f.submit 'v' %>
+    <% end %>
+  </span>
+  <%= thing.name %>
+</li>
