@@ -1,7 +1,9 @@
 Likes::Application.routes.draw do
+  get "opinions/create"
   resources :things, only: [:index, :show]
   root to: 'things#index'
 
+  resources :opinions
   resources :users, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
