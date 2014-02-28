@@ -3,7 +3,6 @@ Likes::Application.routes.draw do
   root to: 'things#index'
 
   resources :users, only: [:show]
-  resources :opinions, only: [:create, :update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

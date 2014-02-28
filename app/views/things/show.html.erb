@@ -3,22 +3,3 @@
   <p><%= @thing.description %></p>
   <%= image_tag @thing.image_url %>
 </section>
-<p class="overall-rating"><strong>Overall rating:</strong> <%= @thing.rating || 'Not yet rated'%></p>
-
-<fieldset>
-  <legend>Your opinion</legend>
-  <%= form_for opinion_for_thing(@thing) do |f| %>
-    <%= f.hidden_field :thing_id, value: @thing.id %>
-    <span class="rating one"><%= f.radio_button :rating, 1 %></span>
-    <span class="rating two"><%= f.radio_button :rating, 2 %></span>
-    <span class="rating three"><%= f.radio_button :rating, 3 %></span>
-    <span class="rating four"><%= f.radio_button :rating, 4 %></span>
-    <span class="rating five"><%= f.radio_button :rating, 5 %></span>
-    <%= f.text_field :comment, placeholder: 'Comment' %>
-    <%= f.submit 'Rate' %>
-  <% end %>
-</fieldset>
-
-<ul class="opinions-list">
-  <%= render @thing.opinions %>
-</ul>
