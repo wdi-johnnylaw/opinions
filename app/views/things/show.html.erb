@@ -7,6 +7,22 @@
 <div style="clear: both">
   <strong>Rating: <%= @thing.average_rating || 'Not yet rated' %></strong>
 </div>
+
+<fieldset>
+  <legend>Give us your opinion</legend>
+  <%= form_for opinion_for_thing(@thing) do |f| %>
+    <%= f.hidden_field :thing_id, value: @thing.id %>
+    <span class="rating one"><%= f.radio_button :rating, 1.0 %></span>
+    <span class="rating two"><%= f.radio_button :rating, 2.0 %></span>
+    <span class="rating three"><%= f.radio_button :rating, 3.0 %></span>
+    <span class="rating four"><%= f.radio_button :rating, 4.0 %></span>
+    <span class="rating five"><%= f.radio_button :rating, 5.0 %></span>
+    <%= f.text_area :comment, placeholder: 'Comment' %>
+    <%= f.submit 'Rate' %>
+  <% end %>
+</fieldset>
+
 <ul class="opinions-list">
   <%= render @thing.opinions %>
 </ul>
+
